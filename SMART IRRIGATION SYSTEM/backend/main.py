@@ -8,9 +8,22 @@ from pydantic import BaseModel
 import joblib
 import numpy as np
 import warnings
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from datetime import datetime
+import asyncio
 warnings.filterwarnings("ignore")
 
 app = FastAPI(title="Smart Irrigation System API", version="1.0.0")
+
+# Initialize scheduler for automatic refresh
+scheduler = AsyncIOScheduler()
+
+# Cache for dashboard statistics (refreshed every hour)
+cache = {
+    "last_refresh": None,
+    "dashboard_stats": None,
+    "sensor_status": None
+}
 
 # Load Crop Recommendation Model
 try:
@@ -58,9 +71,86 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ==================== AUTOMATIC REFRESH FUNCTION ====================
+
+async def refresh_system_data():
+    """
+    Automatic refresh function that runs every 1 hour
+    Updates cached data, sensor status, and system health
+    """
+    try:
+        print(f"\n🔄 [AUTO-REFRESH] Starting system refresh at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+        
+        # Refresh dashboard statistics
+        try:
+            response = supabase.table('land').select('*').execute()
+            cache["dashboard_stats"] = {
+                "total_lands": len(response.data) if response.data else 0,
+                "last_updated": datetime.now().isoformat()
+            }
+            print(f"✓ Dashboard stats refreshed: {cache['dashboard_stats']['total_lands']} lands found")
+        except Exception as e:
+            print(f"⚠️ Error refreshing dashboard stats: {str(e)}")
+        
+        # Refresh sensor status
+        try:
+            sensor_response = supabase.table('soil_analysis').select('land_id, recorded_at').order('recorded_at', desc=True).limit(100).execute()
+            if sensor_response.data:
+                cache["sensor_status"] = {
+                    "active_sensors": len(set([r['land_id'] for r in sensor_response.data])),
+                    "last_reading": sensor_response.data[0]['recorded_at'] if sensor_response.data else None,
+                    "last_updated": datetime.now().isoformat()
+                }
+                print(f"✓ Sensor status refreshed: {cache['sensor_status']['active_sensors']} active sensors")
+        except Exception as e:
+            print(f"⚠️ Error refreshing sensor status: {str(e)}")
+        
+        # Update last refresh time
+        cache["last_refresh"] = datetime.now().isoformat()
+        print(f"✅ [AUTO-REFRESH] Completed successfully at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        
+    except Exception as e:
+        print(f"❌ [AUTO-REFRESH] Error during refresh: {str(e)}")
+
+# ==================== STARTUP & SHUTDOWN EVENTS ====================
+
+@app.on_event("startup")
+async def startup_event():
+    """Initialize scheduler and run first refresh on startup"""
+    print("🚀 Starting Smart Irrigation System API...")
+    
+    # Run initial refresh
+    await refresh_system_data()
+    
+    # Schedule automatic refresh every 30 minutes
+    scheduler.add_job(
+        refresh_system_data,
+        'interval',
+        minutes=30,  # Runs every 30 minutes
+        id='refresh_system_data',
+        replace_existing=True
+    )
+    scheduler.start()
+    print("✅ Scheduler started: Auto-refresh every 30 minutes")
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    """Shutdown scheduler gracefully"""
+    scheduler.shutdown()
+    print("👋 Scheduler stopped")
+
 @app.get("/")
 async def root():
-    return {"message": "Welcome to Smart Irrigation System API", "version": "1.0.0"}
+    return {
+        "message": "Welcome to Smart Irrigation System API",
+        "version": "1.0.0",
+        "auto_refresh": {
+            "enabled": True,
+            "interval": "30 minutes",
+            "last_refresh": cache.get("last_refresh"),
+            "next_refresh": scheduler.get_job('refresh_system_data').next_run_time.isoformat() if scheduler.get_job('refresh_system_data') else None
+        }
+    }
 
 # ==================== SOIL ANALYSIS CHART ENDPOINTS ====================
 
