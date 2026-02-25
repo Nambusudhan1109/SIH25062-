@@ -139,8 +139,8 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     loadSectors();
-    // Auto-refresh every 10 seconds to show admin updates
-    const interval = setInterval(loadSectors, 10000);
+    // Auto-refresh every 30 minutes to match backend refresh cycle
+    const interval = setInterval(loadSectors, 1800000); // 30 minutes
     return () => clearInterval(interval);
   }, [currentUser]);
 

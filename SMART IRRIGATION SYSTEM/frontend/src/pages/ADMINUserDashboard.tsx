@@ -24,10 +24,10 @@ const UserDashboard: React.FC = () => {
     useEffect(() => {
         loadFarmers();
 
-        // Auto-refresh every 5 seconds
+        // Auto-refresh every 30 minutes to match backend refresh cycle
         const interval = setInterval(() => {
             loadFarmers();
-        }, 5000);
+        }, 1800000); // 30 minutes
 
         setRefreshInterval(interval);
 
