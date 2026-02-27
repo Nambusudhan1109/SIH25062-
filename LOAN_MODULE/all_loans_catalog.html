@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏦 Government Loan Schemes - Complete Catalog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(to bottom, 
+                #FF9933 0%, #FF9933 33.33%, 
+                #FFFFFF 33.33%, #FFFFFF 66.66%, 
+                #138808 66.66%, #138808 100%);
+            padding: 3px 0;
+            margin-bottom: 0;
+        }
+        
+        .header-content {
+            background: #0066cc;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .header-content h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .header-content p {
+            font-size: 18px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-header h2 {
+            font-size: 26px;
+        }
+        
+        .loans-table {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .loan-row {
+            display: grid;
+            grid-template-columns: 120px 1fr 200px 150px auto;
+            gap: 20px;
+            padding: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        
+        .loan-row:hover {
+            background: #f8f9fa;
+        }
+        
+        .loan-row:last-child {
+            border-bottom: none;
+        }
+        
+        .loan-image {
+            font-size: 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .loan-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .loan-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 5px;
+        }
+        
+        .loan-eligible {
+            background: #e8f4f8;
+            padding: 6px 12px;
+            border-radius: 5px;
+            font-size: 13px;
+            color: #0066cc;
+            display: inline-block;
+            width: fit-content;
+        }
+        
+        .loan-description {
+            color: #666;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        
+        .loan-amount {
+            text-align: center;
+        }
+        
+        .loan-amount-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #138808;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .loan-amount-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+        
+        .loan-interest {
+            text-align: center;
+        }
+        
+        .interest-badge {
+            background: #fff3cd;
+            color: #856404;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .interest-badge.zero {
+            background: #d4edda;
+            color: #155724;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .loan-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .apply-btn {
+            background: linear-gradient(135deg, #138808 0%, #0a5804 100%);
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: opacity 0.3s;
+        }
+        
+        .apply-btn:hover {
+            opacity: 0.9;
+        }
+        
+        .provider {
+            font-size: 11px;
+            color: #888;
+            text-align: center;
+            margin-top: 5px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 48px;
+            font-weight: bold;
+            color: #0066cc;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .loan-row {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .loan-details {
+                align-items: center;
+            }
+            
+            .loan-eligible {
+                margin: 0 auto;
+            }
+        }
+        
+        .footer {
+            background: #0066cc;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Government Header -->
+    <div class="header"></div>
+    <div class="header-content">
+        <h1>🏛️ Government Loan Schemes - Complete Catalog</h1>
+        <p>Ministry of Agriculture & Farmers Welfare, Government of India</p>
+    </div>
+    
+    <div class="container">
+        <!-- Statistics -->
+        <div class="stats">
+            <div class="stat-card">
+                <span class="stat-value" id="totalLoans">0</span>
+                <div class="stat-label">Total Loan Schemes</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value">2</span>
+                <div class="stat-label">States Covered</div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="maxAmount">₹0</span>
+                <div class="stat-label">Maximum Loan Amount</div>
+            </div>
+        </div>
+        
+        <!-- Tamil Nadu Loans -->
+        <div class="section-header">
+            <span style="font-size: 40px;">🌾</span>
+            <h2>Tamil Nadu - Agricultural Loan Schemes</h2>
+        </div>
+        
+        <div class="loans-table" id="tnLoans"></div>
+        
+        <!-- Sikkim Loans -->
+        <div class="section-header">
+            <span style="font-size: 40px;">🏔️</span>
+            <h2>Sikkim - Hill Farming Loan Schemes</h2>
+        </div>
+        
+        <div class="loans-table" id="sikkimLoans"></div>
+    </div>
+    
+    <div class="footer">
+        <p><strong>Government of India</strong> | Ministry of Agriculture & Farmers Welfare</p>
+        <p>Complete catalog of agricultural loan schemes available to Indian farmers</p>
+    </div>
+    
+    <script>
+        // Loan Database
+        const LOANS = {
+            "Tamil Nadu": [
+                {
+                    name: "Kisan Credit Card (KCC)",
+                    eligible: "All farmers with land ownership",
+                    amount: "₹3,00,000",
+                    interest: "4%",
+                    isZero: false,
+                    description: "Short-term crop loan for purchasing seeds, fertilizers, pesticides, and meeting daily farm expenses. Easy repayment after harvest.",
+                    image: "🌾🚜",
+                    link: "https://www.nabard.org/content1.aspx?id=523&catid=8",
+                    provider: "All Commercial Banks, Cooperative Banks, RRBs"
+                },
+                {
+                    name: "TN Cooperative Crop Loan",
+                    eligible: "Small and Marginal farmers in Tamil Nadu",
+                    amount: "₹2,00,000",
+                    interest: "0%",
+                    isZero: true,
+                    description: "Interest-free crop loan from Tamil Nadu State Cooperative Banks. Best option for small farmers growing rice, sugarcane, pulses, and cotton. Full government subsidy on interest.",
+                    image: "🏦💚",
+                    link: "https://www.tn.gov.in/scheme/category_data/13",
+                    provider: "Tamil Nadu State Cooperative Banks"
+                },
+                {
+                    name: "Agriculture Infrastructure Fund",
+                    eligible: "Farmers with 2+ acres land",
+                    amount: "₹5,00,000",
+                    interest: "3%",
+                    isZero: false,
+                    description: "Medium-term loan for installing drip irrigation, cold storage, warehouses, tractors, and modern farm equipment. Includes interest subsidy and credit guarantee from government.",
+                    image: "🏗️💧",
+                    link: "https://agriinfra.dac.gov.in/",
+                    provider: "Scheduled Commercial Banks"
+                },
+                {
+                    name: "PM Fasal Bima Yojana (Crop Insurance)",
+                    eligible: "All farmers (owners/tenants/sharecroppers)",
+                    amount: "₹2,00,000",
+                    interest: "2%",
+                    isZero: false,
+                    description: "Affordable crop insurance against natural disasters, pests, diseases, and crop failure. Government pays most of the premium. Covers Kharif and Rabi seasons with different premium rates.",
+                    image: "🛡️🌱",
+                    link: "https://pmfby.gov.in/",
+                    provider: "Agriculture Insurance Company of India"
+                }
+            ],
+            "Sikkim": [
+                {
+                    name: "Sikkim Organic Farming Loan",
+                    eligible: "100% Organic certified farmers in Sikkim",
+                    amount: "₹5,00,000",
+                    interest: "4-5%",
+                    isZero: false,
+                    description: "Special loan for Sikkim's 100% organic state status. Supports organic farming practices, certification, and marketing of organic produce. Includes government subsidy on interest rates.",
+                    image: "🌿🏔️",
+                    link: "https://sikkimagrisnet.org/StaticPages/loan-schemes.aspx",
+                    provider: "Sikkim State Cooperative Bank"
+                },
+                {
+                    name: "Agriculture Infrastructure Development",
+                    eligible: "Hill area farmers with 3+ acres",
+                    amount: "₹10,00,000",
+                    interest: "3%",
+                    isZero: false,
+                    description: "Infrastructure loan for hill farming including terracing, irrigation channels, greenhouses, processing units, and cold storage facilities. Highest loan amount available for farm infrastructure.",
+                    image: "🏗️🏔️",
+                    link: "https://sikkim.gov.in/departments/agriculture",
+                    provider: "NABARD and Commercial Banks"
+                },
+                {
+                    name: "Allied Agricultural Activities Loan",
+                    eligible: "Farmers with 0.5+ acres",
+                    amount: "₹3,00,000",
+                    interest: "5%",
+                    isZero: false,
+                    description: "Loan for diversified farming activities including dairy farming, poultry, beekeeping, floriculture, and mushroom cultivation. Promotes income diversification for hill farmers.",
+                    image: "🐄🐝",
+                    link: "https://www.nabard.org/",
+                    provider: "Regional Rural Banks"
+                },
+                {
+                    name: "Kisan Credit Card (KCC) - Sikkim",
+                    eligible: "All farmers with land ownership",
+                    amount: "₹3,00,000",
+                    interest: "4%",
+                    isZero: false,
+                    description: "Short-term crop loan for purchasing seeds, fertilizers, and farm inputs. Specially designed for hill farming requirements. Easy repayment after harvest with interest subvention.",
+                    image: "🌾🚜",
+                    link: "https://www.nabard.org/content1.aspx?id=523&catid=8",
+                    provider: "All Commercial Banks, Cooperative Banks, RRBs"
+                }
+            ]
+        };
+        
+        // Calculate statistics
+        const totalLoans = Object.values(LOANS).reduce((sum, loans) => sum + loans.length, 0);
+        const maxLoan = Object.values(LOANS).flat().reduce((max, loan) => {
+            const amount = parseInt(loan.amount.replace(/[₹,]/g, ''));
+            return amount > max ? amount : max;
+        }, 0);
+        
+        document.getElementById('totalLoans').textContent = totalLoans;
+        document.getElementById('maxAmount').textContent = `₹${(maxLoan / 100000).toFixed(0)} Lakhs`;
+        
+        // Render loans
+        function renderLoans(loans, containerId) {
+            const container = document.getElementById(containerId);
+            
+            loans.forEach(loan => {
+                const row = document.createElement('div');
+                row.className = 'loan-row';
+                row.innerHTML = `
+                    <div class="loan-image">${loan.image}</div>
+                    <div class="loan-details">
+                        <div class="loan-name">${loan.name}</div>
+                        <div class="loan-eligible">${loan.eligible}</div>
+                        <div class="loan-description">${loan.description}</div>
+                    </div>
+                    <div class="loan-amount">
+                        <span class="loan-amount-value">${loan.amount}</span>
+                        <span class="loan-amount-label">Maximum Sanctioned</span>
+                    </div>
+                    <div class="loan-interest">
+                        <div class="interest-badge ${loan.isZero ? 'zero' : ''}">
+                            💰 ${loan.interest} Interest
+                        </div>
+                    </div>
+                    <div class="loan-actions">
+                        <a href="${loan.link}" target="_blank" class="apply-btn">
+                            Apply Now ↗
+                        </a>
+                        <div class="provider">${loan.provider}</div>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+        }
+        
+        // Render all loans
+        renderLoans(LOANS["Tamil Nadu"], 'tnLoans');
+        renderLoans(LOANS["Sikkim"], 'sikkimLoans');
+    </script>
+</body>
+</html>

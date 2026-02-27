@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌾 Farmer Loan System - API Tester</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.2em;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .module-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .module-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .module-card p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.3s;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .result-box {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .result-box h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .result-box pre {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .status {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .status.online {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status.offline {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .lang-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .lang-btn {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn.active {
+            background: #667eea;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌾 Farmer Loan Intelligence System</h1>
+            <p>API Testing Dashboard - Consolidated Module</p>
+        </div>
+        
+        <div id="status" class="status offline">
+            ⏳ Checking API status...
+        </div>
+        
+        <div class="modules-grid">
+            <div class="module-card">
+                <h2>🤖 Smart AI Module</h2>
+                <p>9 advanced AI algorithms with eligibility scoring (0-100), risk assessment, improvement suggestions, and Tamil voice explanation.</p>
+                <button class="btn" onclick="testSmartAI()">Test Smart AI (9 Modules)</button>
+            </div>
+            
+            <div class="module-card">
+                <h2>🔍 Simple Filter</h2>
+                <p>State-based loan filtering with land size eligibility. Clean, simple display without AI calculations.</p>
+                <button class="btn" onclick="testSimpleFilter()">Test Simple Filter</button>
+            </div>
+            
+            <div class="module-card">
+                <h2>🌐 Multi-Language AI</h2>
+                <p>Auto-fetch profile with multi-language support (Tamil, English, Nepali). Government portal design.</p>
+                <div class="lang-selector">
+                    <button class="lang-btn active" data-lang="en" onclick="selectLanguage('en')">English</button>
+                    <button class="lang-btn" data-lang="ta" onclick="selectLanguage('ta')">தமிழ்</button>
+                    <button class="lang-btn" data-lang="ne" onclick="selectLanguage('ne')">नेपाली</button>
+                </div>
+                <button class="btn" onclick="testMultiLang()">Test Multi-Language AI</button>
+            </div>
+        </div>
+        
+        <div id="result" class="result-box">
+            <h3 id="result-title">Result:</h3>
+            <pre id="result-content"></pre>
+        </div>
+    </div>
+    
+    <script>
+        let selectedLang = 'en';
+        const API_BASE = 'http://localhost:5000/api';
+        
+        // Check API status on load
+        checkAPIStatus();
+        
+        async function checkAPIStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                const data = await response.json();
+                
+                const statusDiv = document.getElementById('status');
+                if (data.status === 'OK') {
+                    statusDiv.className = 'status online';
+                    statusDiv.innerHTML = '✅ API Server Online - Ready to test!';
+                } else {
+                    throw new Error('API not responding');
+                }
+            } catch (error) {
+                const statusDiv = document.getElementById('status');
+                statusDiv.className = 'status offline';
+                statusDiv.innerHTML = '❌ API Server Offline - Please run: python3 farmer_loan_system.py';
+            }
+        }
+        
+        function selectLanguage(lang) {
+            selectedLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+        
+        async function testSmartAI() {
+            showResult('Loading Smart AI Module...', '⏳ Processing...');
+            
+            try {
+                const response = await fetch(`${API_BASE}/loan/demo-ai`);
+                const data = await response.json();
+                showResult('Smart AI Module - 9 Advanced Algorithms', JSON.stringify(data, null, 2));
+            } catch (error) {
+                showResult('Error', `Failed to fetch: ${error.message}`);
+            }
+        }
+        
+        async function testSimpleFilter() {
+            showResult('Loading Simple Filter...', '⏳ Processing...');
+            
+            try {
+                const response = await fetch(`${API_BASE}/loan/demo-filter`);
+                const data = await response.json();
+                showResult('Simple Filter - State-based Loans', JSON.stringify(data, null, 2));
+            } catch (error) {
+                showResult('Error', `Failed to fetch: ${error.message}`);
+            }
+        }
+        
+        async function testMultiLang() {
+            showResult(`Loading Multi-Language AI (${selectedLang})...`, '⏳ Processing...');
+            
+            try {
+                const response = await fetch(`${API_BASE}/loan/demo-multilang?lang=${selectedLang}`);
+                const data = await response.json();
+                showResult(`Multi-Language AI - ${selectedLang.toUpperCase()}`, JSON.stringify(data, null, 2));
+            } catch (error) {
+                showResult('Error', `Failed to fetch: ${error.message}`);
+            }
+        }
+        
+        function showResult(title, content) {
+            const resultBox = document.getElementById('result');
+            const resultTitle = document.getElementById('result-title');
+            const resultContent = document.getElementById('result-content');
+            
+            resultTitle.textContent = title;
+            resultContent.textContent = content;
+            resultBox.style.display = 'block';
+            resultBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+</body>
+</html>

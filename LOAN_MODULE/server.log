@@ -1,0 +1,372 @@
+================================================================================
+SMART FARMER LOAN INTELLIGENCE MODULE - MASTER DEMO
+AI Financial Advisor with 9 Advanced Modules
+================================================================================
+
+📋 DEMO: Tamil Nadu Farmer - Complete Profile
+--------------------------------------------------------------------------------
+{
+  "status": "SUCCESS",
+  "user_id": "FARMER_TN_2026_001",
+  "eligibility_score": "81.8 / 100",
+  "eligibility_status": "Good",
+  "eligibility_breakdown": {
+    "land_score": 20,
+    "income_score": 16,
+    "soil_score": 12.8,
+    "irrigation_score": 19.0,
+    "crop_score": 14.0
+  },
+  "risk_score": "18.0 / 100",
+  "risk_breakdown": {
+    "weather_risk": 12.0,
+    "market_risk": 6.0,
+    "loan_history_risk": 0
+  },
+  "approval_probability": "63.8%",
+  "recommended_loans": [
+    {
+      "scheme": "Kisan Credit Card",
+      "loan_amount": "₹168,000",
+      "eligible_amount_raw": 168000,
+      "interest_rate": "4% (after interest subvention)",
+      "subsidy": "Interest subvention available",
+      "apply_link": "https://www.indianbank.in/departments/agri-loans/kisan-credit-card/",
+      "last_updated": "2026-02-26"
+    },
+    {
+      "scheme": "Tamil Nadu Cooperative Crop Loan",
+      "loan_amount": "₹168,000",
+      "eligible_amount_raw": 168000,
+      "interest_rate": "0% (Zero Interest)",
+      "subsidy": "Full interest subsidy",
+      "apply_link": "https://www.tn.gov.in",
+      "last_updated": "2026-02-26"
+    },
+    {
+      "scheme": "PM Fasal Bima Yojana",
+      "loan_amount": "₹150,000",
+      "eligible_amount_raw": 150000,
+      "interest_rate": "2% premium (Govt subsidized)",
+      "subsidy": "Premium subsidy by government",
+      "apply_link": "https://pmfby.gov.in",
+      "last_updated": "2026-02-26"
+    }
+  ],
+  "improvement_suggestions": [
+    "அதிக லாபம் தரும் பயிர்களை (Organic crops/Spices) தேர்வு செய்யலாம் (Consider higher profitability crops)",
+    "கூட்டுறவு வங்கி திட்டங்களில் விண்ணப்பிக்கலாம் - குறைந்த வட்டி விகிதம் (Apply for cooperative bank schemes)"
+  ],
+  "repayment_plan": {
+    "harvest_month": "May",
+    "harvest_season": "Kharif/Rabi",
+    "repayment_start": "After May Harvest",
+    "expected_revenue": "₹240,000",
+    "production_cost": "₹96,000",
+    "loan_repayment": "₹168,000",
+    "profit_after_repayment": "₹-24,000",
+    "profit_margin": "-10.0%"
+  },
+  "probability_simulation": {
+    "previous": "63.8%",
+    "updated": "63.8%",
+    "change_indicator": "INITIAL",
+    "message": "Modify inputs to see probability changes"
+  },
+  "voice_explanation_tamil": "உங்களுக்கு Kisan Credit Card கடன் பெற நல்ல தகுதி உள்ளது. உங்கள் நில அளவு 6.0 ஏக்கர் மற்றும் Rice சாகுபடி செய்வதால் இந்த கடன் பரிந்துரைக்கப்படுகிறது. வட்டி விகிதம் 4% (after interest subvention) மட்டுமே. உங்கள் Rice அறுவடை May மாதத்தில் முடியும். அறுவடைக்கு பிறகு கடன் திருப்பிச் செலுத்தலாம். எதிர்பார்க்கப்படும் லாபம் ரூபாய் ₹-24,000.",
+  "visibility": "PRIVATE_USER_ONLY",
+  "generated_at": "2026-02-27T10:37:38.025945"
+}
+
+
+🎯 DEMO: Interactive Probability Simulator
+--------------------------------------------------------------------------------
+Scenario: Farmer changes irrigation from Drip to Canal
+{
+  "previous_probability": "63.8%",
+  "updated_probability": "59.8%",
+  "change": "-4.0",
+  "change_indicator": "DECREASE",
+  "message": "வெற்றி வாய்ப்பு சற்று குறைந்துள்ளது (Slightly Decreased)"
+}
+
+================================================================================
+✅ MASTER MODULE DEMO COMPLETE
+✅ Data saved to: smart_loan_records.json
+================================================================================
+
+🏛️  GOVERNMENT SMART FARMING APPLICATION
+MODULE: Available Loans Filter
+Version: 1.0 (Simple Farmer-Friendly)
+Date: February 27, 2026
+
+
+======================================================================
+DEMO: Available Loans for Tamil Nadu Farmer
+======================================================================
+
+✅ Status: SUCCESS
+👤 User ID: FARMER_TN_001
+📍 State: Tamil Nadu
+🌾 Land Size: 3.0 acres
+
+📋 Total Available Loans: 4
+
+----------------------------------------------------------------------
+
+1. Kisan Credit Card (KCC)
+   Description: Short-term crop loan for seeds, fertilizers, and farm needs. Easy repayment after harvest.
+   Maximum Amount: ₹3,00,000
+   Interest Rate: 4% (after interest subvention)
+   Provider: All Commercial Banks, Cooperative Banks, RRBs
+   Apply Link: https://www.nabard.org/content1.aspx?id=523&catid=8
+
+2. Tamil Nadu Cooperative Crop Loan
+   Description: Zero-interest crop loan from Tamil Nadu Cooperative Banks. Best option for small farmers.
+   Maximum Amount: ₹2,00,000
+   Interest Rate: 0% (Zero Interest - Government Subsidy)
+   Provider: Tamil Nadu State Cooperative Banks
+   Apply Link: https://www.tn.gov.in/scheme/category_data/13
+
+3. Agriculture Infrastructure Fund
+   Description: Medium-term loan for drip irrigation, cold storage, warehouses, and farm equipment.
+   Maximum Amount: ₹5,00,000
+   Interest Rate: 3% (with interest subvention)
+   Provider: Scheduled Commercial Banks
+   Apply Link: https://agriinfra.dac.gov.in/
+
+4. PM Fasal Bima Yojana (Crop Insurance)
+   Description: Affordable crop insurance against natural disasters, pests, and crop failure.
+   Maximum Amount: ₹2,00,000 (Sum Insured)
+   Interest Rate: 2% premium (Kharif), 1.5% (Rabi)
+   Provider: Agriculture Insurance Company of India
+   Apply Link: https://pmfby.gov.in/
+
+======================================================================
+
+======================================================================
+DEMO: Available Loans for Sikkim Organic Farmer
+======================================================================
+
+✅ Status: SUCCESS
+👤 User ID: FARMER_SK_001
+📍 State: Sikkim
+🌾 Land Size: 5.0 acres
+
+📋 Total Available Loans: 4
+
+----------------------------------------------------------------------
+
+1. Sikkim Organic Farming Loan
+   Description: Special loan for 100% organic farmers in Sikkim. Covers seeds, inputs, and certification.
+   Maximum Amount: ₹5,00,000
+   Interest Rate: 4-5% (with government subsidy)
+   Provider: Sikkim State Cooperative Bank
+   Apply Link: https://sikkimagrisnet.org/StaticPages/loan-schemes.aspx
+
+2. Agriculture Infrastructure Development Loan
+   Description: Loan for building greenhouses, polyhouses, and modern farming infrastructure in hilly areas.
+   Maximum Amount: ₹10,00,000
+   Interest Rate: 3%
+   Provider: NABARD and Commercial Banks
+   Apply Link: https://sikkim.gov.in/departments/agriculture
+
+3. Allied Agricultural Activities Loan
+   Description: Loan for poultry, dairy, fishery, bee-keeping, and mushroom farming activities.
+   Maximum Amount: ₹3,00,000
+   Interest Rate: 5%
+   Provider: Regional Rural Banks
+   Apply Link: https://www.nabard.org/
+
+4. Kisan Credit Card (KCC)
+   Description: Short-term crop loan for seeds, fertilizers, and farm needs. Easy repayment after harvest.
+   Maximum Amount: ₹3,00,000
+   Interest Rate: 4% (after interest subvention)
+   Provider: All Commercial Banks, Cooperative Banks, RRBs
+   Apply Link: https://www.nabard.org/content1.aspx?id=523&catid=8
+
+======================================================================
+
+✅ Demo Complete!
+
+💡 Key Features:
+   - Simple loan display (no AI calculations)
+   - State-based filtering
+   - Land size eligibility check
+   - Official government links only
+   - Private user-specific results
+
+🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️
+AI FARMER LOAN RECOMMENDATION & INFORMATION MODULE
+Integrated Inside Smart Crop Suggestion App
+🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️🏛️
+
+✨ Features:
+  ✓ Auto-fetches logged-in farmer profile (NO manual entry)
+  ✓ Shows only eligible government loans
+  ✓ Multi-language: Tamil, English, Nepali
+  ✓ Indian Government portal design
+  ✓ Private personalized recommendations
+
+================================================================================
+
+================================================================================
+DEMO 1: Tamil Nadu Farmer (Tamil Language)
+================================================================================
+
+✅ Status: SUCCESS
+👤 Farmer: Rajesh Kumar
+🆔 User ID: FARMER_TN_001
+📍 Location: Coimbatore, Tamil Nadu
+🌾 Land Size: 4.5 acres
+🌐 Language: Tamil (தமிழ்)
+
+💰 Total Eligible Loans: 4
+
+--------------------------------------------------------------------------------
+
+1. 🌾🚜 கிசான் கடன் அட்டை (KCC)
+   தகுதி: நில உரிமை உள்ள அனைத்து விவசாயிகள்
+   அதிகபட்ச தொகை: ₹3,00,000
+   வட்டி விகிதம்: 4% (வட்டி மானியத்திற்கு பிறகு)
+   விவரம்: விதைகள், உரங்கள், பூச்சிக்கொல்லிகள் வாங்கவும், தினசரி விவசாய செலவுகளை சந்திக்கவும் குறுகிய கால பயிர் கடன். அறுவடைக்கு பிறகு எளிதாக திருப்பிச் செலுத்தலாம்.
+   வழங்குபவர்: All Commercial Banks, Cooperative Banks, RRBs
+   🔗 Apply: https://www.nabard.org/content1.aspx?id=523&catid=8
+
+2. 🏦💚 தமிழ்நாடு கூட்டுறவு பயிர் கடன்
+   தகுதி: தமிழ்நாட்டில் உள்ள சிறு மற்றும் குறு விவசாயிகள்
+   அதிகபட்ச தொகை: ₹2,00,000
+   வட்டி விகிதம்: 0% (வட்டி இல்லை - முழு அரசு மானியம்)
+   விவரம்: தமிழ்நாடு கூட்டுறவு வங்கிகளிலிருந்து வட்டி இல்லாத பயிர் கடன். அரிசி, கரும்பு, பருப்பு வகைகள் மற்றும் பருத்தி வளர்க்க சிறு விவசாயிகளுக்கு சிறந்த வாய்ப்பு.
+   வழங்குபவர்: Tamil Nadu State Cooperative Banks
+   🔗 Apply: https://www.tn.gov.in/scheme/category_data/13
+
+3. 🏗️💧 விவசாய உள்கட்டமைப்பு நிதி
+   தகுதி: 2+ ஏக்கர் நிலம் உள்ள விவசாயிகள்
+   அதிகபட்ச தொகை: ₹5,00,000
+   வட்டி விகிதம்: 3% (வட்டி மானியத்துடன்)
+   விவரம்: சொட்டு நீர் பாசனம் நிறுவுதல், குளிர்சாதன கிடங்கு, கிடங்குகள், டிராக்டர்கள் மற்றும் நவீன விவசாய உபகரணங்களை வாங்குவதற்கான நடுத்தர கால கடன்.
+   வழங்குபவர்: Scheduled Commercial Banks
+   🔗 Apply: https://agriinfra.dac.gov.in/
+
+4. 🛡️🌱 பிரதமர் பசல் பீமா யோஜனா (பயிர் காப்பீடு)
+   தகுதி: அனைத்து விவசாயிகள் (உரிமையாளர்/குத்தகைதாரர்/பங்கு தோட்டக்காரர்)
+   அதிகபட்ச தொகை: ₹2,00,000 (Sum Insured)
+   வட்டி விகிதம்: கரீப் பருவத்திற்கு 2% பிரீமியம், ரபி பருவத்திற்கு 1.5%
+   விவரம்: இயற்கை பேரிடர்கள், பூச்சிகள், நோய்கள் மற்றும் பயிர் தோல்விக்கு எதிரான மலிவு பயிர் காப்பீடு. அரசாங்கம் பெரும்பாலான பிரீமியத்தை செலுத்துகிறது.
+   வழங்குபவர்: Agriculture Insurance Company of India
+   🔗 Apply: https://pmfby.gov.in/
+
+================================================================================
+
+================================================================================
+DEMO 2: Sikkim Farmer (Nepali Language)
+================================================================================
+
+✅ Status: SUCCESS
+👤 Farmer: Karma Dorjee
+🆔 User ID: FARMER_SK_001
+📍 Location: East Sikkim, Sikkim
+🌾 Land Size: 5.0 acres
+🌐 Language: Nepali (नेपाली)
+
+💰 Total Eligible Loans: 4
+
+--------------------------------------------------------------------------------
+
+1. 🌿🏔️ सिक्किम जैविक खेती ऋण
+   योग्यता: सिक्किममा 100% जैविक प्रमाणित किसानहरू
+   अधिकतम रकम: ₹5,00,000
+   ब्याज दर: 4-5% (सरकारी अनुदान संग)
+   विवरण: 100% जैविक राज्य सिक्किमको लागि विशेष ऋण। जैविक बीउ, जैव मल, जैविक प्रमाणीकरण र मार्केटिङ समर्थन समावेश।
+   प्रदायक: Sikkim State Cooperative Bank
+   🔗 Apply: https://sikkimagrisnet.org/StaticPages/loan-schemes.aspx
+
+2. 🏗️🏔️ कृषि पूर्वाधार विकास ऋण
+   योग्यता: 3+ एकर भएका पहाडी क्षेत्रका किसानहरू
+   अधिकतम रकम: ₹10,00,000
+   ब्याज दर: 3%
+   विवरण: सिक्किमको पहाडी भूभागका लागि उपयुक्त हरित गृह, पोलिहाउस र आधुनिक कृषि पूर्वाधार निर्माणको लागि ऋण।
+   प्रदायक: NABARD and Commercial Banks
+   🔗 Apply: https://sikkim.gov.in/departments/agriculture
+
+3. 🐄🐝 सम्बन्धित कृषि गतिविधि ऋण
+   योग्यता: 0.5+ एकर भएका किसानहरू
+   अधिकतम रकम: ₹3,00,000
+   ब्याज दर: 5%
+   विवरण: नियमित खेतीको साथसाथै कुखुरा पालन, दुग्ध उत्पादन, माछा पालन, मौरी पालन र च्याउ खेतीको लागि ऋण।
+   प्रदायक: Regional Rural Banks
+   🔗 Apply: https://www.nabard.org/
+
+4. 🌾🚜 किसान क्रेडिट कार्ड (KCC)
+   योग्यता: भूमि स्वामित्व भएका सबै किसानहरू
+   अधिकतम रकम: ₹3,00,000
+   ब्याज दर: 4% (ब्याज अनुदान पछि)
+   विवरण: बीउ, मल, कीटनाशक किन्न र दैनिक खेती खर्च पूरा गर्न छोटो अवधिको बाली ऋण। फसल काटे पछि सजिलो भुक्तानी।
+   प्रदायक: All Commercial Banks, Cooperative Banks, RRBs
+   🔗 Apply: https://www.nabard.org/content1.aspx?id=523&catid=8
+
+================================================================================
+
+================================================================================
+DEMO 3: Tamil Nadu Farmer (English Language)
+================================================================================
+
+✅ Status: SUCCESS
+👤 Farmer: Rajesh Kumar
+📍 Location: Coimbatore, Tamil Nadu
+🌐 Language: English
+
+💰 Total Eligible Loans: 4
+
+--------------------------------------------------------------------------------
+
+1. 🌾🚜 Kisan Credit Card (KCC)
+   Eligible: All farmers with land ownership
+   Maximum: ₹3,00,000
+   Interest: 4% (after interest subvention)
+   Description: Short-term crop loan for purchasing seeds, fertilizers, pesticides, and meeting daily farm expenses. Easy repayment after harvest.
+   Provider: All Commercial Banks, Cooperative Banks, RRBs
+   🔗 Apply: https://www.nabard.org/content1.aspx?id=523&catid=8
+
+2. 🏦💚 Tamil Nadu Cooperative Crop Loan
+   Eligible: Small and Marginal farmers in Tamil Nadu
+   Maximum: ₹2,00,000
+   Interest: 0% (Zero Interest - Full Government Subsidy)
+   Description: Interest-free crop loan from Tamil Nadu State Cooperative Banks. Best option for small farmers to grow rice, sugarcane, pulses, and cotton.
+   Provider: Tamil Nadu State Cooperative Banks
+   🔗 Apply: https://www.tn.gov.in/scheme/category_data/13
+
+3. 🏗️💧 Agriculture Infrastructure Fund
+   Eligible: Farmers with 2+ acres land
+   Maximum: ₹5,00,000
+   Interest: 3% (with interest subvention)
+   Description: Medium-term loan for installing drip irrigation, building cold storage, warehouses, purchasing tractors and modern farm equipment.
+   Provider: Scheduled Commercial Banks
+   🔗 Apply: https://agriinfra.dac.gov.in/
+
+4. 🛡️🌱 PM Fasal Bima Yojana (Crop Insurance)
+   Eligible: All farmers (Owner/Tenant/Sharecropper)
+   Maximum: ₹2,00,000 (Sum Insured)
+   Interest: 2% premium for Kharif, 1.5% for Rabi
+   Description: Affordable crop insurance against natural calamities, pests, diseases, and crop failure. Government pays majority of premium.
+   Provider: Agriculture Insurance Company of India
+   🔗 Apply: https://pmfby.gov.in/
+
+================================================================================
+
+
+✅ Demo Complete!
+
+💡 Key Highlights:
+  - Tamil Nadu farmer got 4 loans in Tamil
+  - Sikkim farmer got 4 loans in Nepali
+  - Same data available in English too
+
+🎯 Zero manual entry - All data from user profile!
+🌐 Full multi-language support!
+🔒 Private results for each user!
+Traceback (most recent call last):
+  File "/Users/sudhan/Desktop/LOAN/SIH25062-/LOAN_MODULE/farmer_loan_system.py", line 1641, in <module>
+    from smart_loan_intelligence import (
+ModuleNotFoundError: No module named 'smart_loan_intelligence'

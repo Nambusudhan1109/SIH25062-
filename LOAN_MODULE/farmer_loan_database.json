@@ -1,0 +1,474 @@
+{
+  "smart_loan_records": {
+    "FARMER_TN_2026_001": {
+      "status": "SUCCESS",
+      "user_id": "FARMER_TN_2026_001",
+      "eligibility_score": "81.8 / 100",
+      "eligibility_status": "Good",
+      "eligibility_breakdown": {
+        "land_score": 20,
+        "income_score": 16,
+        "soil_score": 12.8,
+        "irrigation_score": 19.0,
+        "crop_score": 14.0
+      },
+      "risk_score": "18.0 / 100",
+      "risk_breakdown": {
+        "weather_risk": 12.0,
+        "market_risk": 6.0,
+        "loan_history_risk": 0
+      },
+      "approval_probability": "63.8%",
+      "recommended_loans": [
+        {
+          "scheme": "Kisan Credit Card",
+          "loan_amount": "₹168,000",
+          "eligible_amount_raw": 168000,
+          "interest_rate": "4% (after interest subvention)",
+          "subsidy": "Interest subvention available",
+          "apply_link": "https://www.indianbank.in/departments/agri-loans/kisan-credit-card/",
+          "last_updated": "2026-02-26"
+        },
+        {
+          "scheme": "Tamil Nadu Cooperative Crop Loan",
+          "loan_amount": "₹168,000",
+          "eligible_amount_raw": 168000,
+          "interest_rate": "0% (Zero Interest)",
+          "subsidy": "Full interest subsidy",
+          "apply_link": "https://www.tn.gov.in",
+          "last_updated": "2026-02-26"
+        },
+        {
+          "scheme": "PM Fasal Bima Yojana",
+          "loan_amount": "₹150,000",
+          "eligible_amount_raw": 150000,
+          "interest_rate": "2% premium (Govt subsidized)",
+          "subsidy": "Premium subsidy by government",
+          "apply_link": "https://pmfby.gov.in",
+          "last_updated": "2026-02-26"
+        }
+      ],
+      "improvement_suggestions": [
+        "அதிக லாபம் தரும் பயிர்களை (Organic crops/Spices) தேர்வு செய்யலாம் (Consider higher profitability crops)",
+        "கூட்டுறவு வங்கி திட்டங்களில் விண்ணப்பிக்கலாம் - குறைந்த வட்டி விகிதம் (Apply for cooperative bank schemes)"
+      ],
+      "repayment_plan": {
+        "harvest_month": "May",
+        "harvest_season": "Kharif/Rabi",
+        "repayment_start": "After May Harvest",
+        "expected_revenue": "₹240,000",
+        "production_cost": "₹96,000",
+        "loan_repayment": "₹168,000",
+        "profit_after_repayment": "₹-24,000",
+        "profit_margin": "-10.0%"
+      },
+      "probability_simulation": {
+        "previous": "63.8%",
+        "updated": "63.8%",
+        "change_indicator": "INITIAL",
+        "message": "Modify inputs to see probability changes"
+      },
+      "voice_explanation_tamil": "உங்களுக்கு Kisan Credit Card கடன் பெற நல்ல தகுதி உள்ளது. உங்கள் நில அளவு 6.0 ஏக்கர் மற்றும் Rice சாகுபடி செய்வதால் இந்த கடன் பரிந்துரைக்கப்படுகிறது. வட்டி விகிதம் 4% (after interest subvention) மட்டுமே. உங்கள் Rice அறுவடை May மாதத்தில் முடியும். அறுவடைக்கு பிறகு கடன் திருப்பிச் செலுத்தலாம். எதிர்பார்க்கப்படும் லாபம் ரூபாய் ₹-24,000.",
+      "visibility": "PRIVATE_USER_ONLY",
+      "generated_at": "2026-02-26T16:06:47.651470"
+    }
+  },
+  "user_loan_data": {
+    "user_tn_001": {
+      "recommendations": {
+        "user_id": "user_tn_001",
+        "state": "Tamil Nadu",
+        "district": "Coimbatore",
+        "eligibility_score": 0.58,
+        "risk_score": 0.27,
+        "risk_level": "Low",
+        "approval_probability": "65.5%",
+        "recommended_amount": "₹152,000",
+        "recommendations": [
+          {
+            "scheme_name": "Tamil Nadu Cooperative Crop Loan",
+            "eligible_amount": "₹150,000",
+            "interest_rate": "0% (state supported)",
+            "apply_link": "https://www.tn.gov.in",
+            "priority": 10
+          },
+          {
+            "scheme_name": "Kisan Credit Card",
+            "eligible_amount": "₹152,000",
+            "interest_rate": "4% after subsidy",
+            "apply_link": "https://www.indianbank.in/departments/agri-loans/kisan-credit-card/",
+            "priority": 8
+          },
+          {
+            "scheme_name": "Agriculture Infrastructure Fund",
+            "eligible_amount": "₹152,000",
+            "interest_rate": "3-6%",
+            "apply_link": "https://agriinfra.dac.gov.in",
+            "priority": 5
+          }
+        ],
+        "user_profile": {
+          "land_size": 3.5,
+          "crop": "Rice",
+          "irrigation": "Canal",
+          "soil": "Good",
+          "income": 80000,
+          "organic_certified": false
+        },
+        "timestamp": "2026-02-26T14:49:32.824236",
+        "status": "PRIVATE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-02-26T14:49:32.824236",
+          "approval_probability": "65.5%",
+          "recommended_amount": "₹152,000"
+        }
+      ]
+    },
+    "user_sk_002": {
+      "recommendations": {
+        "user_id": "user_sk_002",
+        "state": "Sikkim",
+        "district": "East Sikkim",
+        "eligibility_score": 0.74,
+        "risk_score": 0.45,
+        "risk_level": "Medium",
+        "approval_probability": "64.5%",
+        "recommended_amount": "₹350,000",
+        "recommendations": [
+          {
+            "scheme_name": "Sikkim Organic Farming Scheme",
+            "eligible_amount": "₹250,000",
+            "interest_rate": "4-5% with subsidy",
+            "apply_link": "https://www.sikkimorganicmission.gov.in",
+            "priority": 10
+          },
+          {
+            "scheme_name": "State Bank of Sikkim Agriculture Loan",
+            "eligible_amount": "₹350,000",
+            "interest_rate": "7-9%",
+            "apply_link": "https://www.statebankofsikkim.com/agriculture-loans",
+            "priority": 7
+          },
+          {
+            "scheme_name": "Allied Activity Loan",
+            "eligible_amount": "₹350,000",
+            "interest_rate": "6-8%",
+            "apply_link": "https://www.statebankofsikkim.com/agriculture-loans",
+            "priority": 5
+          }
+        ],
+        "user_profile": {
+          "land_size": 6.0,
+          "crop": "Organic Vegetables",
+          "irrigation": "Sprinkler",
+          "soil": "Excellent",
+          "income": 150000,
+          "organic_certified": true
+        },
+        "timestamp": "2026-02-26T14:49:32.825744",
+        "status": "PRIVATE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-02-26T14:49:32.825744",
+          "approval_probability": "64.5%",
+          "recommended_amount": "₹350,000"
+        }
+      ]
+    },
+    "user_tn_003": {
+      "recommendations": {
+        "user_id": "user_tn_003",
+        "state": "Tamil Nadu",
+        "district": "Thanjavur",
+        "eligibility_score": 0.79,
+        "risk_score": 0.2,
+        "risk_level": "Low",
+        "approval_probability": "79.5%",
+        "recommended_amount": "₹704,000",
+        "recommendations": [
+          {
+            "scheme_name": "Kisan Credit Card",
+            "eligible_amount": "₹300,000",
+            "interest_rate": "4% after subsidy",
+            "apply_link": "https://www.indianbank.in/departments/agri-loans/kisan-credit-card/",
+            "priority": 8
+          },
+          {
+            "scheme_name": "Tamil Nadu Cooperative Crop Loan",
+            "eligible_amount": "₹150,000",
+            "interest_rate": "0% (state supported)",
+            "apply_link": "https://www.tn.gov.in",
+            "priority": 5
+          },
+          {
+            "scheme_name": "Agriculture Infrastructure Fund",
+            "eligible_amount": "₹704,000",
+            "interest_rate": "3-6%",
+            "apply_link": "https://agriinfra.dac.gov.in",
+            "priority": 5
+          }
+        ],
+        "user_profile": {
+          "land_size": 15.0,
+          "crop": "Sugarcane",
+          "irrigation": "Drip",
+          "soil": "Excellent",
+          "income": 300000,
+          "organic_certified": false
+        },
+        "timestamp": "2026-02-26T14:49:32.827120",
+        "status": "PRIVATE"
+      },
+      "history": [
+        {
+          "timestamp": "2026-02-26T14:49:32.827120",
+          "approval_probability": "79.5%",
+          "recommended_amount": "₹704,000"
+        }
+      ]
+    }
+  },
+  "government_loan_records": {
+    "FARMER_TN_001": {
+      "status": "SUCCESS",
+      "user_id": "FARMER_TN_001",
+      "eligibility_score": 0.87,
+      "risk_level": "LOW",
+      "recommended_loans": [
+        {
+          "scheme": "Tamil Nadu Cooperative Crop Loan",
+          "eligible_amount": "₹140,000",
+          "interest_rate": "0% (Zero Interest)",
+          "approval_probability": "84.6%",
+          "apply_link": "https://www.tn.gov.in"
+        },
+        {
+          "scheme": "Kisan Credit Card",
+          "eligible_amount": "₹140,000",
+          "interest_rate": "4% (after interest subvention)",
+          "approval_probability": "84.6%",
+          "apply_link": "https://www.indianbank.in/departments/agri-loans/kisan-credit-card/"
+        },
+        {
+          "scheme": "PM Fasal Bima Yojana",
+          "eligible_amount": "₹140,000",
+          "interest_rate": "2% premium (Govt subsidized)",
+          "approval_probability": "84.6%",
+          "apply_link": "https://pmfby.gov.in"
+        }
+      ],
+      "visibility": "PRIVATE_USER_ONLY",
+      "generated_at": "2026-02-26T14:58:13.917289"
+    },
+    "FARMER_SK_002": {
+      "status": "SUCCESS",
+      "user_id": "FARMER_SK_002",
+      "eligibility_score": 0.9,
+      "risk_level": "LOW",
+      "recommended_loans": [
+        {
+          "scheme": "Sikkim Organic Farming Scheme",
+          "eligible_amount": "₹392,000",
+          "interest_rate": "4-5% (with subsidy)",
+          "approval_probability": "87.0%",
+          "apply_link": "https://www.statebankofsikkim.com/agriculture-loans"
+        },
+        {
+          "scheme": "Agriculture Infrastructure Development",
+          "eligible_amount": "₹392,000",
+          "interest_rate": "3% (subsidized)",
+          "approval_probability": "87.0%",
+          "apply_link": "https://agriinfra.dac.gov.in"
+        },
+        {
+          "scheme": "State Bank of Sikkim Agriculture Loan",
+          "eligible_amount": "₹392,000",
+          "interest_rate": "6-7%",
+          "approval_probability": "87.0%",
+          "apply_link": "https://www.statebankofsikkim.com/agriculture-loans"
+        }
+      ],
+      "visibility": "PRIVATE_USER_ONLY",
+      "generated_at": "2026-02-26T14:58:13.918594"
+    }
+  },
+  "random_dataset_results": {
+    "FARMER_001": {
+      "status": "SUCCESS",
+      "user_id": "FARMER_001",
+      "farmer_name": "Rajesh Kumar",
+      "state": "Tamil Nadu",
+      "district": "Coimbatore",
+      "land_size": "5.5 acres",
+      "language": "Tamil (தமிழ்)",
+      "total_eligible_loans": 4,
+      "recommended_loans": [
+        {
+          "loan_id": "KCC_001",
+          "loan_name": "கிசான் கடன் அட்டை (KCC)",
+          "eligible_farmer_type": "நில உரிமை உள்ள அனைத்து விவசாயிகள்",
+          "maximum_amount": "₹3,00,000",
+          "interest_rate": "4% (வட்டி மானியத்திற்கு பிறகு)",
+          "description": "விதைகள், உரங்கள், பூச்சிக்கொல்லிகள் வாங்கவும், தினசரி விவசாய செலவுகளை சந்திக்கவும் குறுகிய கால பயிர் கடன். அறுவடைக்கு பிறகு எளிதாக திருப்பிச் செலுத்தலாம்.",
+          "loan_image": "🌾🚜",
+          "apply_link": "https://www.nabard.org/content1.aspx?id=523&catid=8",
+          "provider": "All Commercial Banks, Cooperative Banks, RRBs"
+        },
+        {
+          "loan_id": "TN_COOP_001",
+          "loan_name": "தமிழ்நாடு கூட்டுறவு பயிர் கடன்",
+          "eligible_farmer_type": "தமிழ்நாட்டில் உள்ள சிறு மற்றும் குறு விவசாயிகள்",
+          "maximum_amount": "₹2,00,000",
+          "interest_rate": "0% (வட்டி இல்லை - முழு அரசு மானியம்)",
+          "description": "தமிழ்நாடு கூட்டுறவு வங்கிகளிலிருந்து வட்டி இல்லாத பயிர் கடன். அரிசி, கரும்பு, பருப்பு வகைகள் மற்றும் பருத்தி வளர்க்க சிறு விவசாயிகளுக்கு சிறந்த வாய்ப்பு.",
+          "loan_image": "🏦💚",
+          "apply_link": "https://www.tn.gov.in/scheme/category_data/13",
+          "provider": "Tamil Nadu State Cooperative Banks"
+        },
+        {
+          "loan_id": "AGRI_INFRA_001",
+          "loan_name": "விவசாய உள்கட்டமைப்பு நிதி",
+          "eligible_farmer_type": "2+ ஏக்கர் நிலம் உள்ள விவசாயிகள்",
+          "maximum_amount": "₹5,00,000",
+          "interest_rate": "3% (வட்டி மானியத்துடன்)",
+          "description": "சொட்டு நீர் பாசனம் நிறுவுதல், குளிர்சாதன கிடங்கு, கிடங்குகள், டிராக்டர்கள் மற்றும் நவீன விவசாய உபகரணங்களை வாங்குவதற்கான நடுத்தர கால கடன்.",
+          "loan_image": "🏗️💧",
+          "apply_link": "https://agriinfra.dac.gov.in/",
+          "provider": "Scheduled Commercial Banks"
+        },
+        {
+          "loan_id": "PM_FASAL_001",
+          "loan_name": "பிரதமர் பசல் பீமா யோஜனா (பயிர் காப்பீடு)",
+          "eligible_farmer_type": "அனைத்து விவசாயிகள் (உரிமையாளர்/குத்தகைதாரர்/பங்கு தோட்டக்காரர்)",
+          "maximum_amount": "₹2,00,000 (Sum Insured)",
+          "interest_rate": "கரீப் பருவத்திற்கு 2% பிரீமியம், ரபி பருவத்திற்கு 1.5%",
+          "description": "இயற்கை பேரிடர்கள், பூச்சிகள், நோய்கள் மற்றும் பயிர் தோல்விக்கு எதிரான மலிவு பயிர் காப்பீடு. அரசாங்கம் பெரும்பாலான பிரீமியத்தை செலுத்துகிறது.",
+          "loan_image": "🛡️🌱",
+          "apply_link": "https://pmfby.gov.in/",
+          "provider": "Agriculture Insurance Company of India"
+        }
+      ],
+      "generated_at": "2026-02-27 09:37:23",
+      "visibility": "PRIVATE_USER_ONLY"
+    },
+    "FARMER_002": {
+      "status": "SUCCESS",
+      "user_id": "FARMER_002",
+      "farmer_name": "Murugesan S",
+      "state": "Tamil Nadu",
+      "district": "Thanjavur",
+      "land_size": "3.2 acres",
+      "language": "Tamil (தமிழ்)",
+      "total_eligible_loans": 4,
+      "recommended_loans": [
+        {
+          "loan_id": "KCC_001",
+          "loan_name": "கிசான் கடன் அட்டை (KCC)",
+          "eligible_farmer_type": "நில உரிமை உள்ள அனைத்து விவசாயிகள்",
+          "maximum_amount": "₹3,00,000",
+          "interest_rate": "4% (வட்டி மானியத்திற்கு பிறகு)",
+          "description": "விதைகள், உரங்கள், பூச்சிக்கொல்லிகள் வாங்கவும், தினசரி விவசாய செலவுகளை சந்திக்கவும் குறுகிய கால பயிர் கடன். அறுவடைக்கு பிறகு எளிதாக திருப்பிச் செலுத்தலாம்.",
+          "loan_image": "🌾🚜",
+          "apply_link": "https://www.nabard.org/content1.aspx?id=523&catid=8",
+          "provider": "All Commercial Banks, Cooperative Banks, RRBs"
+        },
+        {
+          "loan_id": "TN_COOP_001",
+          "loan_name": "தமிழ்நாடு கூட்டுறவு பயிர் கடன்",
+          "eligible_farmer_type": "தமிழ்நாட்டில் உள்ள சிறு மற்றும் குறு விவசாயிகள்",
+          "maximum_amount": "₹2,00,000",
+          "interest_rate": "0% (வட்டி இல்லை - முழு அரசு மானியம்)",
+          "description": "தமிழ்நாடு கூட்டுறவு வங்கிகளிலிருந்து வட்டி இல்லாத பயிர் கடன். அரிசி, கரும்பு, பருப்பு வகைகள் மற்றும் பருத்தி வளர்க்க சிறு விவசாயிகளுக்கு சிறந்த வாய்ப்பு.",
+          "loan_image": "🏦💚",
+          "apply_link": "https://www.tn.gov.in/scheme/category_data/13",
+          "provider": "Tamil Nadu State Cooperative Banks"
+        },
+        {
+          "loan_id": "AGRI_INFRA_001",
+          "loan_name": "விவசாய உள்கட்டமைப்பு நிதி",
+          "eligible_farmer_type": "2+ ஏக்கர் நிலம் உள்ள விவசாயிகள்",
+          "maximum_amount": "₹5,00,000",
+          "interest_rate": "3% (வட்டி மானியத்துடன்)",
+          "description": "சொட்டு நீர் பாசனம் நிறுவுதல், குளிர்சாதன கிடங்கு, கிடங்குகள், டிராக்டர்கள் மற்றும் நவீன விவசாய உபகரணங்களை வாங்குவதற்கான நடுத்தர கால கடன்.",
+          "loan_image": "🏗️💧",
+          "apply_link": "https://agriinfra.dac.gov.in/",
+          "provider": "Scheduled Commercial Banks"
+        },
+        {
+          "loan_id": "PM_FASAL_001",
+          "loan_name": "பிரதமர் பசல் பீமா யோஜனா (பயிர் காப்பீடு)",
+          "eligible_farmer_type": "அனைத்து விவசாயிகள் (உரிமையாளர்/குத்தகைதாரர்/பங்கு தோட்டக்காரர்)",
+          "maximum_amount": "₹2,00,000 (Sum Insured)",
+          "interest_rate": "கரீப் பருவத்திற்கு 2% பிரீமியம், ரபி பருவத்திற்கு 1.5%",
+          "description": "இயற்கை பேரிடர்கள், பூச்சிகள், நோய்கள் மற்றும் பயிர் தோல்விக்கு எதிரான மலிவு பயிர் காப்பீடு. அரசாங்கம் பெரும்பாலான பிரீமியத்தை செலுத்துகிறது.",
+          "loan_image": "🛡️🌱",
+          "apply_link": "https://pmfby.gov.in/",
+          "provider": "Agriculture Insurance Company of India"
+        }
+      ],
+      "generated_at": "2026-02-27 09:37:23",
+      "visibility": "PRIVATE_USER_ONLY"
+    },
+    "FARMER_003": {
+      "status": "SUCCESS",
+      "user_id": "FARMER_003",
+      "farmer_name": "Lakshmi Devi",
+      "state": "Tamil Nadu",
+      "district": "Madurai",
+      "land_size": "2.0 acres",
+      "language": "Tamil (தமிழ்)",
+      "total_eligible_loans": 4,
+      "recommended_loans": [
+        {
+          "loan_id": "KCC_001",
+          "loan_name": "கிசான் கடன் அட்டை (KCC)",
+          "eligible_farmer_type": "நில உரிமை உள்ள அனைத்து விவசாயிகள்",
+          "maximum_amount": "₹3,00,000",
+          "interest_rate": "4% (வட்டி மானியத்திற்கு பிறகு)",
+          "description": "விதைகள், உரங்கள், பூச்சிக்கொல்லிகள் வாங்கவும், தினசரி விவசாய செலவுகளை சந்திக்கவும் குறுகிய கால பயிர் கடன். அறுவடைக்கு பிறகு எளிதாக திருப்பிச் செலுத்தலாம்.",
+          "loan_image": "🌾🚜",
+          "apply_link": "https://www.nabard.org/content1.aspx?id=523&catid=8",
+          "provider": "All Commercial Banks, Cooperative Banks, RRBs"
+        },
+        {
+          "loan_id": "TN_COOP_001",
+          "loan_name": "தமிழ்நாடு கூட்டுறவு பயிர் கடன்",
+          "eligible_farmer_type": "தமிழ்நாட்டில் உள்ள சிறு மற்றும் குறு விவசாயிகள்",
+          "maximum_amount": "₹2,00,000",
+          "interest_rate": "0% (வட்டி இல்லை - முழு அரசு மானியம்)",
+          "description": "தமிழ்நாடு கூட்டுறவு வங்கிகளிலிருந்து வட்டி இல்லாத பயிர் கடன். அரிசி, கரும்பு, பருப்பு வகைகள் மற்றும் பருத்தி வளர்க்க சிறு விவசாயிகளுக்கு சிறந்த வாய்ப்பு.",
+          "loan_image": "🏦💚",
+          "apply_link": "https://www.tn.gov.in/scheme/category_data/13",
+          "provider": "Tamil Nadu State Cooperative Banks"
+        },
+        {
+          "loan_id": "AGRI_INFRA_001",
+          "loan_name": "விவசாய உள்கட்டமைப்பு நிதி",
+          "eligible_farmer_type": "2+ ஏக்கர் நிலம் உள்ள விவசாயிகள்",
+          "maximum_amount": "₹5,00,000",
+          "interest_rate": "3% (வட்டி மானியத்துடன்)",
+          "description": "சொட்டு நீர் பாசனம் நிறுவுதல், குளிர்சாதன கிடங்கு, கிடங்குகள், டிராக்டர்கள் மற்றும் நவீன விவசாய உபகரணங்களை வாங்குவதற்கான நடுத்தர கால கடன்.",
+          "loan_image": "🏗️💧",
+          "apply_link": "https://agriinfra.dac.gov.in/",
+          "provider": "Scheduled Commercial Banks"
+        },
+        {
+          "loan_id": "PM_FASAL_001",
+          "loan_name": "பிரதமர் பசல் பீமா யோஜனா (பயிர் காப்பீடு)",
+          "eligible_farmer_type": "அனைத்து விவசாயிகள் (உரிமையாளர்/குத்தகைதாரர்/பங்கு தோட்டக்காரர்)",
+          "maximum_amount": "₹2,00,000 (Sum Insured)",
+          "interest_rate": "கரீப் பருவத்திற்கு 2% பிரீமியம், ரபி பருவத்திற்கு 1.5%",
+          "description": "இயற்கை பேரிடர்கள், பூச்சிகள், நோய்கள் மற்றும் பயிர் தோல்விக்கு எதிரான மலிவு பயிர் காப்பீடு. அரசாங்கம் பெரும்பாலான பிரீமியத்தை செலுத்துகிறது.",
+          "loan_image": "🛡️🌱",
+          "apply_link": "https://pmfby.gov.in/",
+          "provider": "Agriculture Insurance Company of India"
+        }
+      ],
+      "generated_at": "2026-02-27 09:37:23",
+      "visibility": "PRIVATE_USER_ONLY"
+    }
+  }
+}

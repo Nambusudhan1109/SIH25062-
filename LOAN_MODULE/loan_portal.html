@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌾 Government Loan Schemes - Smart Farming Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', 'Noto Sans Tamil', 'Noto Sans Devanagari', sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+        
+        /* Government Header - Indian Tricolor */
+        .government-header {
+            background: linear-gradient(to bottom, 
+                #FF9933 0%, #FF9933 33.33%, 
+                #FFFFFF 33.33%, #FFFFFF 66.66%, 
+                #138808 66.66%, #138808 100%);
+            padding: 3px 0;
+        }
+        
+        .header-content {
+            background: #0066cc;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .emblem {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+        
+        .header-content h1 {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+        
+        .header-content p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        /* Auto-fetch Badge */
+        .auto-fetch-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .auto-fetch-badge span {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 3px solid #0066cc;
+        }
+        
+        .language-selector label {
+            font-weight: bold;
+            color: #0066cc;
+            margin-right: 10px;
+        }
+        
+        .lang-btn {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border: 2px solid #0066cc;
+            background: white;
+            color: #0066cc;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .lang-btn:hover {
+            background: #0066cc;
+            color: white;
+        }
+        
+        .lang-btn.active {
+            background: #0066cc;
+            color: white;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Profile Card */
+        .profile-card {
+            background: linear-gradient(135deg, #0066cc 0%, #004d99 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .profile-card h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .profile-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .profile-info-item {
+            background: rgba(255,255,255,0.1);
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        
+        .profile-info-item strong {
+            display: block;
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .profile-info-item span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        /* Section Title */
+        .section-title {
+            background: #0066cc;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-size: 22px;
+        }
+        
+        /* Loan Cards Grid */
+        .loans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        /* Loan Card */
+        .loan-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #0066cc;
+        }
+        
+        .loan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .loan-icon {
+            background: linear-gradient(135deg, #0066cc 0%, #138808 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            font-size: 60px;
+        }
+        
+        .loan-content {
+            padding: 25px;
+        }
+        
+        .loan-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+        
+        .loan-eligible {
+            background: #e8f4f8;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 13px;
+            color: #0066cc;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+        
+        .loan-amount {
+            font-size: 28px;
+            font-weight: bold;
+            color: #138808;
+            margin: 15px 0;
+        }
+        
+        .loan-interest {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #856404;
+            font-weight: bold;
+        }
+        
+        .loan-interest.zero-interest {
+            background: #d4edda;
+            color: #155724;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        .loan-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 15px 0;
+        }
+        
+        .loan-provider {
+            font-size: 12px;
+            color: #888;
+            margin: 10px 0;
+        }
+        
+        .loan-provider strong {
+            color: #0066cc;
+        }
+        
+        .apply-btn {
+            background: linear-gradient(135deg, #138808 0%, #0a5804 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 15px;
+            transition: opacity 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .apply-btn:hover {
+            opacity: 0.9;
+        }
+        
+        /* Voice Button */
+        .voice-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .voice-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+        
+        .voice-btn.speaking {
+            background: linear-gradient(135deg, #FF9933 0%, #FF6B35 100%);
+            animation: voicePulse 1s infinite;
+        }
+        
+        @keyframes voicePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Footer */
+        .footer {
+            background: #0066cc;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+        
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 50px;
+            font-size: 18px;
+            color: #0066cc;
+        }
+        
+        /* Error */
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .loans-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .header-content h1 {
+                font-size: 22px;
+            }
+            
+            .emblem {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Government Header with Indian Tricolor -->
+    <div class="government-header"></div>
+    
+    <div class="header-content">
+        <div class="emblem">🏛️</div>
+        <h1>Ministry of Agriculture & Farmers Welfare</h1>
+        <p>Government of India - Smart Farming Portal</p>
+    </div>
+    
+    <!-- Auto-fetch Badge -->
+    <div class="auto-fetch-badge">
+        <span>✨ Profile Auto-Fetched - No Manual Entry Required</span>
+    </div>
+    
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <label>🌐 Select Language:</label>
+        <button class="lang-btn active" onclick="changeLanguage('en')">English</button>
+        <button class="lang-btn" onclick="changeLanguage('ta')">தமிழ்</button>
+        <button class="lang-btn" onclick="changeLanguage('ne')">नेपाली</button>
+    </div>
+    
+    <div class="container">
+        <!-- Profile Card -->
+        <div class="profile-card" id="profileCard" style="display: none;">
+            <h2>👤 Your Profile</h2>
+            <div class="profile-info" id="profileInfo"></div>
+        </div>
+        
+        <!-- Section Title -->
+        <div class="section-title">
+            💳 Eligible Government Loan Schemes for You
+        </div>
+        
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            ⏳ Loading your personalized loan recommendations...
+        </div>
+        
+        <!-- Error -->
+        <div class="error" id="error" style="display: none;"></div>
+        
+        <!-- Loans Grid -->
+        <div class="loans-grid" id="loansGrid"></div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        <p><strong>Government of India</strong> | Ministry of Agriculture & Farmers Welfare</p>
+        <p>© 2026 Smart Farming Portal - Empowering Indian Farmers</p>
+    </div>
+    
+    <script>
+        let currentLanguage = 'en';
+        let currentUserId = 'FARMER_TN_001'; // Default test user
+        
+        // Language translations for UI
+        const translations = {
+            en: {
+                profileTitle: '👤 Your Profile',
+                loansTitle: '💳 Eligible Government Loan Schemes for You',
+                loading: '⏳ Loading your personalized loan recommendations...',
+                apply: 'Apply via Official Portal ↗',
+                provider: 'Provider:',
+                voiceExplain: '🎤 Explain in Voice',
+                name: 'Name:',
+                state: 'State:',
+                district: 'District:',
+                landSize: 'Land Size:',
+                crop: 'Crop Type:',
+                totalLoans: 'Total Eligible Loans:'
+            },
+            ta: {
+                profileTitle: '👤 உங்கள் சுயவிவரம்',
+                loansTitle: '💳 உங்களுக்கு தகுதியான அரசு கடன் திட்டங்கள்',
+                loading: '⏳ உங்கள் தனிப்பயனாக்கப்பட்ட கடன் பரிந்துரைகளை ஏற்றுகிறது...',
+                apply: 'அதிகாரப்பூர்வ போர்ட்டல் வழியாக விண்ணப்பிக்கவும் ↗',
+                provider: 'வழங்குபவர்:',
+                voiceExplain: '🎤 குரல் மூலம் விளக்கவும்',
+                name: 'பெயர்:',
+                state: 'மாநிலம்:',
+                district: 'மாவட்டம்:',
+                landSize: 'நில அளவு:',
+                crop: 'பயிர் வகை:',
+                totalLoans: 'மொத்த தகுதியான கடன்கள்:'
+            },
+            ne: {
+                profileTitle: '👤 तपाईंको प्रोफाइल',
+                loansTitle: '💳 तपाईंको लागि योग्य सरकारी ऋण योजनाहरू',
+                loading: '⏳ तपाईंको व्यक्तिगत ऋण सिफारिसहरू लोड गर्दै...',
+                apply: 'आधिकारिक पोर्टल मार्फत आवेदन दिनुहोस् ↗',
+                provider: 'प्रदायक:',
+                voiceExplain: '🎤 आवाजमा व्याख्या गर्नुहोस्',
+                name: 'नाम:',
+                state: 'राज्य:',
+                district: 'जिल्ला:',
+                landSize: 'जमिनको आकार:',
+                crop: 'बालीको प्रकार:',
+                totalLoans: 'कुल योग्य ऋणहरू:'
+            }
+        };
+        
+        // Change language
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Stop any ongoing voice
+            stopVoice();
+            
+            // Update active button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Reload loans
+            loadLoans();
+        }
+        
+        // Load loans on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            // Initialize speech synthesis voices
+            if ('speechSynthesis' in window) {
+                // Load voices
+                window.speechSynthesis.getVoices();
+                
+                // Some browsers need this event to load voices
+                window.speechSynthesis.onvoiceschanged = () => {
+                    window.speechSynthesis.getVoices();
+                };
+            }
+            
+            // Check if user_id is in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get('user_id');
+            if (userId) {
+                currentUserId = userId;
+            }
+            
+            loadLoans();
+        });
+        
+        // Load loans
+        async function loadLoans() {
+            const loadingDiv = document.getElementById('loading');
+            const errorDiv = document.getElementById('error');
+            const loansGrid = document.getElementById('loansGrid');
+            const profileCard = document.getElementById('profileCard');
+            
+            loadingDiv.style.display = 'block';
+            errorDiv.style.display = 'none';
+            loansGrid.innerHTML = '';
+            profileCard.style.display = 'none';
+            
+            try {
+                const response = await fetch(`http://localhost:5000/api/loan/recommendations?user_id=${currentUserId}&lang=${currentLanguage}`);
+                const data = await response.json();
+                
+                if (data.status === 'SUCCESS') {
+                    // Store loans for voice feature
+                    currentLoans = data.recommended_loans;
+                    
+                    // Display profile
+                    displayProfile(data);
+                    
+                    // Display loans
+                    displayLoans(data.recommended_loans);
+                    
+                    loadingDiv.style.display = 'none';
+                    profileCard.style.display = 'block';
+                } else {
+                    throw new Error(data.message || 'Failed to load loans');
+                }
+            } catch (error) {
+                loadingDiv.style.display = 'none';
+                errorDiv.style.display = 'block';
+                errorDiv.innerHTML = `<strong>Error:</strong> ${error.message}<br><br>Please ensure the API server is running on port 5000.`;
+            }
+        }
+        
+        // Display profile
+        function displayProfile(data) {
+            const profileInfo = document.getElementById('profileInfo');
+            const t = translations[currentLanguage];
+            
+            profileInfo.innerHTML = `
+                <div class="profile-info-item">
+                    <strong>${t.name}</strong>
+                    <span>${data.farmer_name}</span>
+                </div>
+                <div class="profile-info-item">
+                    <strong>${t.state}</strong>
+                    <span>${data.state}</span>
+                </div>
+                <div class="profile-info-item">
+                    <strong>${t.district}</strong>
+                    <span>${data.district}</span>
+                </div>
+                <div class="profile-info-item">
+                    <strong>${t.landSize}</strong>
+                    <span>${data.land_size}</span>
+                </div>
+                <div class="profile-info-item">
+                    <strong>${t.crop}</strong>
+                    <span>${data.crop_type}</span>
+                </div>
+                <div class="profile-info-item">
+                    <strong>${t.totalLoans}</strong>
+                    <span>${data.total_eligible_loans}</span>
+                </div>
+            `;
+        }
+        
+        // Display loans
+        function displayLoans(loans) {
+            const loansGrid = document.getElementById('loansGrid');
+            const t = translations[currentLanguage];
+            
+            if (loans.length === 0) {
+                loansGrid.innerHTML = '<p style="text-align: center; color: #666;">No eligible loans found for your profile.</p>';
+                return;
+            }
+            
+            loans.forEach((loan, index) => {
+                const isZeroInterest = loan.interest_rate.includes('0%') || loan.interest_rate.includes('Zero');
+                
+                const card = document.createElement('div');
+                card.className = 'loan-card';
+                card.innerHTML = `
+                    <div class="loan-icon">${loan.loan_image}</div>
+                    <div class="loan-content">
+                        <div class="loan-name">${loan.loan_name}</div>
+                        <div class="loan-eligible">${loan.eligible_farmer_type}</div>
+                        <div class="loan-amount">${loan.maximum_amount}</div>
+                        <div class="loan-interest ${isZeroInterest ? 'zero-interest' : ''}">
+                            💰 ${loan.interest_rate}
+                        </div>
+                        <div class="loan-description">${loan.description}</div>
+                        <div class="loan-provider">
+                            <strong>${t.provider}</strong> ${loan.provider}
+                        </div>
+                        <button class="voice-btn" onclick="speakLoanDetails('${loan.loan_id}', this)" id="voice-${loan.loan_id}">
+                            🎤 ${t.voiceExplain || 'Explain in Voice'}
+                        </button>
+                        <a href="${loan.apply_link}" target="_blank" class="apply-btn">
+                            ${t.apply}
+                        </a>
+                    </div>
+                `;
+                
+                loansGrid.appendChild(card);
+            });
+        }
+
+        // Voice explanation feature
+        let currentSpeech = null;
+        let currentLoans = [];
+
+        function speakLoanDetails(loanId, buttonElement) {
+            // Stop any ongoing speech
+            if (currentSpeech) {
+                window.speechSynthesis.cancel();
+                document.querySelectorAll('.voice-btn').forEach(btn => btn.classList.remove('speaking'));
+            }
+
+            // Find the loan
+            const loan = currentLoans.find(l => l.loan_id === loanId);
+            if (!loan || !loan.description) {
+                alert('Voice explanation not available for this loan.');
+                return;
+            }
+
+            // Check available voices
+            const voices = window.speechSynthesis.getVoices();
+            console.log('Available voices:', voices.length);
+            
+            // Eligibility message in three languages
+            const eligibilityMessages = {
+                'en': 'You are eligible to have this loan. ',
+                'ta': 'நீங்கள் இந்த கடன் பெற தகுதியுடையவர். ',
+                'ne': 'तपाईं यो ऋण लिन योग्य हुनुहुन्छ। '
+            };
+
+            // Check if Tamil/Nepali voice is available, if not use English
+            let actualLanguage = currentLanguage;
+            let useEnglishFallback = false;
+            
+            if (currentLanguage === 'ta') {
+                const hasTamilOrHindi = voices.some(v => v.lang.startsWith('ta') || v.lang.startsWith('hi'));
+                if (!hasTamilOrHindi) {
+                    console.log('⚠️ No Tamil/Hindi voice found. Using English translation for better clarity.');
+                    actualLanguage = 'en';
+                    useEnglishFallback = true;
+                }
+            } else if (currentLanguage === 'ne') {
+                const hasNepaliOrHindi = voices.some(v => v.lang.startsWith('ne') || v.lang.startsWith('hi'));
+                if (!hasNepaliOrHindi) {
+                    console.log('⚠️ No Nepali/Hindi voice found. Using English translation for better clarity.');
+                    actualLanguage = 'en';
+                    useEnglishFallback = true;
+                }
+            }
+
+            // Get text to speak
+            const eligibilityText = useEnglishFallback ? 
+                eligibilityMessages['en'] : 
+                (eligibilityMessages[currentLanguage] || eligibilityMessages['en']);
+            const descriptionText = useEnglishFallback ? 
+                loan.description['en'] : 
+                (loan.description[currentLanguage] || loan.description['en']);
+            const fullText = eligibilityText + descriptionText;
+            
+            console.log('Speaking:', fullText.substring(0, 50) + '...');
+            
+            // Create speech
+            currentSpeech = new SpeechSynthesisUtterance(fullText);
+            currentSpeech.lang = 'en-US'; // Default to English
+            currentSpeech.rate = 0.8;
+            currentSpeech.pitch = 1.0;
+            currentSpeech.volume = 1.0;
+            
+            // Try to select best voice
+            if (actualLanguage === 'ta' && !useEnglishFallback) {
+                const tamilVoice = voices.find(v => v.lang.startsWith('ta'));
+                if (tamilVoice) {
+                    currentSpeech.voice = tamilVoice;
+                    currentSpeech.lang = 'ta-IN';
+                    console.log('✅ Using Tamil voice:', tamilVoice.name);
+                } else {
+                    const hindiVoice = voices.find(v => v.lang.startsWith('hi'));
+                    if (hindiVoice) {
+                        currentSpeech.voice = hindiVoice;
+                        currentSpeech.lang = 'hi-IN';
+                        console.log('✅ Using Hindi voice for Tamil:', hindiVoice.name);
+                    }
+                }
+            } else if (actualLanguage === 'ne' && !useEnglishFallback) {
+                const nepaliVoice = voices.find(v => v.lang.startsWith('ne'));
+                if (nepaliVoice) {
+                    currentSpeech.voice = nepaliVoice;
+                    currentSpeech.lang = 'ne-NP';
+                    console.log('✅ Using Nepali voice:', nepaliVoice.name);
+                } else {
+                    const hindiVoice = voices.find(v => v.lang.startsWith('hi'));
+                    if (hindiVoice) {
+                        currentSpeech.voice = hindiVoice;
+                        currentSpeech.lang = 'hi-IN';
+                        console.log('✅ Using Hindi voice for Nepali:', hindiVoice.name);
+                    }
+                }
+            } else {
+                // Use English voice
+                const enVoice = voices.find(v => v.lang.startsWith('en-US') || v.lang.startsWith('en'));
+                if (enVoice) {
+                    currentSpeech.voice = enVoice;
+                    console.log('✅ Using English voice:', enVoice.name);
+                }
+            }
+            
+            if (useEnglishFallback) {
+                console.log('📢 Speaking in English (Tamil/Nepali voice not available)');
+            }
+
+            // Add speaking animation
+            buttonElement.classList.add('speaking');
+            console.log('🎤 Voice button clicked, speaking in', currentLanguage, '(actual:', actualLanguage, ')');
+
+            // Callbacks
+            currentSpeech.onstart = () => {
+                console.log('✅ Voice started successfully!');
+            };
+
+            currentSpeech.onend = () => {
+                console.log('✅ Voice completed');
+                buttonElement.classList.remove('speaking');
+                currentSpeech = null;
+            };
+
+            currentSpeech.onerror = (e) => {
+                console.error('❌ Speech error:', e.error);
+                buttonElement.classList.remove('speaking');
+                currentSpeech = null;
+            };
+
+            // Speak immediately
+            try {
+                window.speechSynthesis.speak(currentSpeech);
+                console.log('Speech command sent to browser');
+            } catch (error) {
+                console.error('Failed to start speech:', error);
+                buttonElement.classList.remove('speaking');
+                alert('Could not start voice. Please check your browser supports text-to-speech.');
+            }
+        }
+
+        // Stop voice when language changes
+        function stopVoice() {
+            if (currentSpeech) {
+                window.speechSynthesis.cancel();
+                document.querySelectorAll('.voice-btn').forEach(btn => btn.classList.remove('speaking'));
+                currentSpeech = null;
+            }
+        }
+    </script>
+</body>
+</html>

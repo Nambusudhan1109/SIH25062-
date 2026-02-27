@@ -1,0 +1,74 @@
+{
+  "FARMER_TN_2026_001": {
+    "status": "SUCCESS",
+    "user_id": "FARMER_TN_2026_001",
+    "eligibility_score": "81.8 / 100",
+    "eligibility_status": "Good",
+    "eligibility_breakdown": {
+      "land_score": 20,
+      "income_score": 16,
+      "soil_score": 12.8,
+      "irrigation_score": 19.0,
+      "crop_score": 14.0
+    },
+    "risk_score": "18.0 / 100",
+    "risk_breakdown": {
+      "weather_risk": 12.0,
+      "market_risk": 6.0,
+      "loan_history_risk": 0
+    },
+    "approval_probability": "63.8%",
+    "recommended_loans": [
+      {
+        "scheme": "Kisan Credit Card",
+        "loan_amount": "₹168,000",
+        "eligible_amount_raw": 168000,
+        "interest_rate": "4% (after interest subvention)",
+        "subsidy": "Interest subvention available",
+        "apply_link": "https://www.indianbank.in/departments/agri-loans/kisan-credit-card/",
+        "last_updated": "2026-02-26"
+      },
+      {
+        "scheme": "Tamil Nadu Cooperative Crop Loan",
+        "loan_amount": "₹168,000",
+        "eligible_amount_raw": 168000,
+        "interest_rate": "0% (Zero Interest)",
+        "subsidy": "Full interest subsidy",
+        "apply_link": "https://www.tn.gov.in",
+        "last_updated": "2026-02-26"
+      },
+      {
+        "scheme": "PM Fasal Bima Yojana",
+        "loan_amount": "₹150,000",
+        "eligible_amount_raw": 150000,
+        "interest_rate": "2% premium (Govt subsidized)",
+        "subsidy": "Premium subsidy by government",
+        "apply_link": "https://pmfby.gov.in",
+        "last_updated": "2026-02-26"
+      }
+    ],
+    "improvement_suggestions": [
+      "அதிக லாபம் தரும் பயிர்களை (Organic crops/Spices) தேர்வு செய்யலாம் (Consider higher profitability crops)",
+      "கூட்டுறவு வங்கி திட்டங்களில் விண்ணப்பிக்கலாம் - குறைந்த வட்டி விகிதம் (Apply for cooperative bank schemes)"
+    ],
+    "repayment_plan": {
+      "harvest_month": "May",
+      "harvest_season": "Kharif/Rabi",
+      "repayment_start": "After May Harvest",
+      "expected_revenue": "₹240,000",
+      "production_cost": "₹96,000",
+      "loan_repayment": "₹168,000",
+      "profit_after_repayment": "₹-24,000",
+      "profit_margin": "-10.0%"
+    },
+    "probability_simulation": {
+      "previous": "63.8%",
+      "updated": "63.8%",
+      "change_indicator": "INITIAL",
+      "message": "Modify inputs to see probability changes"
+    },
+    "voice_explanation_tamil": "உங்களுக்கு Kisan Credit Card கடன் பெற நல்ல தகுதி உள்ளது. உங்கள் நில அளவு 6.0 ஏக்கர் மற்றும் Rice சாகுபடி செய்வதால் இந்த கடன் பரிந்துரைக்கப்படுகிறது. வட்டி விகிதம் 4% (after interest subvention) மட்டுமே. உங்கள் Rice அறுவடை May மாதத்தில் முடியும். அறுவடைக்கு பிறகு கடன் திருப்பிச் செலுத்தலாம். எதிர்பார்க்கப்படும் லாபம் ரூபாய் ₹-24,000.",
+    "visibility": "PRIVATE_USER_ONLY",
+    "generated_at": "2026-02-27T12:16:46.454667"
+  }
+}

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎤 Voice Agent Test - All 3 Languages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .test-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+
+        .test-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .language-flag {
+            font-size: 2em;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .loan-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .loan-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .loan-amount {
+            color: #28a745;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .voice-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .voice-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .voice-btn.speaking {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .voice-text {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #555;
+            max-height: 100px;
+            overflow-y: auto;
+        }
+
+        .status {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .status.speaking {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .control-btn {
+            padding: 10px 20px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .control-btn:hover {
+            background: #218838;
+        }
+
+        .control-btn.stop {
+            background: #dc3545;
+        }
+
+        .control-btn.stop:hover {
+            background: #c82333;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎤 Voice Agent Test Dashboard</h1>
+            <p>Multi-Language Voice Explanation Testing - English, Tamil & Nepali</p>
+        </div>
+
+        <!-- Statistics -->
+        <div class="test-section">
+            <h2>📊 Implementation Statistics</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalLoans">0</div>
+                    <div class="stat-label">Total Loans</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Languages</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="voiceCount">0</div>
+                    <div class="stat-label">Voice Plays</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="currentLang">EN</div>
+                    <div class="stat-label">Current Language</div>
+                </div>
+            </div>
+            <div class="status" id="status">
+                🔊 Ready to play voice explanations
+            </div>
+        </div>
+
+        <!-- English Section -->
+        <div class="test-section">
+            <h2><span class="language-flag">🇮🇳</span> English Voice Agent</h2>
+            <div class="test-grid" id="englishGrid"></div>
+        </div>
+
+        <!-- Tamil Section -->
+        <div class="test-section">
+            <h2><span class="language-flag">🇮🇳</span> Tamil Voice Agent (தமிழ்)</h2>
+            <div class="test-grid" id="tamilGrid"></div>
+        </div>
+
+        <!-- Nepali Section -->
+        <div class="test-section">
+            <h2><span class="language-flag">🇳🇵</span> Nepali Voice Agent (नेपाली)</h2>
+            <div class="test-grid" id="nepaliGrid"></div>
+        </div>
+
+        <!-- Global Controls -->
+        <div class="test-section">
+            <h2>🎮 Voice Controls</h2>
+            <div class="controls">
+                <button class="control-btn stop" onclick="stopAllVoices()">⏹️ Stop All Voices</button>
+                <button class="control-btn" onclick="testAllLanguages()">🔄 Test All Languages</button>
+                <button class="control-btn" onclick="loadLoans()">🔃 Reload Loans</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let loans = [];
+        let currentSpeech = null;
+        let voicePlayCount = 0;
+
+        // Load loans from API
+        async function loadLoans() {
+            try {
+                const response = await fetch('http://localhost:5000/api/loan/recommendations?user_id=FARMER_TN_001&lang=en');
+                const data = await response.json();
+                
+                if (data.status === 'SUCCESS') {
+                    loans = data.recommended_loans;
+                    document.getElementById('totalLoans').textContent = loans.length;
+                    renderLoans();
+                } else {
+                    alert('Failed to load loans: ' + data.message);
+                }
+            } catch (error) {
+                alert('Error: ' + error.message + '\\nMake sure Flask server is running on port 5000');
+            }
+        }
+
+        // Render loans in all three languages
+        function renderLoans() {
+            renderLanguageSection('englishGrid', 'en', 'English');
+            renderLanguageSection('tamilGrid', 'ta', 'Tamil');
+            renderLanguageSection('nepaliGrid', 'ne', 'Nepali');
+        }
+
+        // Render single language section
+        function renderLanguageSection(gridId, lang, langName) {
+            const grid = document.getElementById(gridId);
+            grid.innerHTML = '';
+
+            loans.slice(0, 3).forEach((loan, index) => {
+                const card = document.createElement('div');
+                card.className = 'loan-card';
+                
+                const loanName = loan.loan_name[lang] || loan.loan_name['en'];
+                const voiceText = loan.description ? 
+                    (loan.description[lang] || loan.description['en']) : 
+                    'Voice not available';
+
+                card.innerHTML = `
+                    <h3>${loanName}</h3>
+                    <div class="loan-amount">${loan.maximum_amount}</div>
+                    <button class="voice-btn" onclick="playVoice('${loan.loan_id}', '${lang}', this)">
+                        🎤 Play Voice in ${langName}
+                    </button>
+                    <div class="voice-text">${voiceText}</div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        // Play voice
+        function playVoice(loanId, lang, button) {
+            // Stop previous voice
+            if (currentSpeech) {
+                window.speechSynthesis.cancel();
+                document.querySelectorAll('.voice-btn').forEach(btn => {
+                    btn.classList.remove('speaking');
+                });
+            }
+
+            // Find loan
+            const loan = loans.find(l => l.loan_id === loanId);
+            if (!loan || !loan.description) {
+                alert('Voice explanation not available');
+                return;
+            }
+
+            // Eligibility message in three languages
+            const eligibilityMessages = {
+                'en': 'You are eligible to have this loan. ',
+                'ta': 'நீங்கள் இந்த கடன் பெற தகுதியுடையவர். ',
+                'ne': 'तपाईं यो ऋण लिन योग्य हुनुहुन्छ। '
+            };
+            
+            // Check if voice is available for the selected language
+            const voices = window.speechSynthesis.getVoices();
+            let actualLanguage = lang;
+            let useEnglishFallback = false;
+            
+            if (lang === 'ta') {
+                const hasTamilOrHindi = voices.some(v => v.lang.startsWith('ta') || v.lang.startsWith('hi'));
+                if (!hasTamilOrHindi) {
+                    console.log('⚠️ No Tamil/Hindi voice. Using English translation.');
+                    actualLanguage = 'en';
+                    useEnglishFallback = true;
+                }
+            } else if (lang === 'ne') {
+                const hasNepaliOrHindi = voices.some(v => v.lang.startsWith('ne') || v.lang.startsWith('hi'));
+                if (!hasNepaliOrHindi) {
+                    console.log('⚠️ No Nepali/Hindi voice. Using English translation.');
+                    actualLanguage = 'en';
+                    useEnglishFallback = true;
+                }
+            }
+
+            // Get full text
+            const eligibilityText = useEnglishFallback ? 
+                eligibilityMessages['en'] : 
+                (eligibilityMessages[lang] || eligibilityMessages['en']);
+            const descriptionText = useEnglishFallback ? 
+                loan.description['en'] : 
+                (loan.description[lang] || loan.description['en']);
+            const fullText = eligibilityText + descriptionText;
+            
+            console.log('Speaking in', lang, '(actual:', actualLanguage, '):', fullText.substring(0, 50) + '...');
+            
+            // Create speech
+            currentSpeech = new SpeechSynthesisUtterance(fullText);
+            currentSpeech.lang = 'en-US';
+            currentSpeech.rate = 0.8;
+            currentSpeech.pitch = 1.0;
+            currentSpeech.volume = 1.0;
+            
+            // Try to select appropriate voice
+            if (actualLanguage === 'ta' && !useEnglishFallback) {
+                const tamilVoice = voices.find(v => v.lang.startsWith('ta'));
+                if (tamilVoice) {
+                    currentSpeech.voice = tamilVoice;
+                    currentSpeech.lang = 'ta-IN';
+                    console.log('Using Tamil voice:', tamilVoice.name);
+                } else {
+                    const hindiVoice = voices.find(v => v.lang.startsWith('hi'));
+                    if (hindiVoice) {
+                        currentSpeech.voice = hindiVoice;
+                        currentSpeech.lang = 'hi-IN';
+                        console.log('Using Hindi voice for Tamil');
+                    }
+                }
+            } else if (actualLanguage === 'ne' && !useEnglishFallback) {
+                const nepaliVoice = voices.find(v => v.lang.startsWith('ne'));
+                if (nepaliVoice) {
+                    currentSpeech.voice = nepaliVoice;
+                    currentSpeech.lang = 'ne-NP';
+                } else {
+                    const hindiVoice = voices.find(v => v.lang.startsWith('hi'));
+                    if (hindiVoice) {
+                        currentSpeech.voice = hindiVoice;
+                        currentSpeech.lang = 'hi-IN';
+                    }
+                }
+            } else {
+                const enVoice = voices.find(v => v.lang.startsWith('en'));
+                if (enVoice) {
+                    currentSpeech.voice = enVoice;
+                }
+            }
+            
+            // Update language indicator
+            document.getElementById('currentLang').textContent = lang.toUpperCase();
+
+            // Update UI
+            button.classList.add('speaking');
+            const status = document.getElementById('status');
+            status.className = 'status speaking';
+            status.textContent = `🔊 Playing: ${loan.loan_name[lang] || loan.loan_name['en']} (${lang.toUpperCase()})`;
+            
+            voicePlayCount++;
+            document.getElementById('voiceCount').textContent = voicePlayCount;
+
+            // Callbacks
+            currentSpeech.onstart = () => {
+                console.log('✅ Voice started');
+            };
+
+            currentSpeech.onend = () => {
+                console.log('✅ Voice completed');
+                button.classList.remove('speaking');
+                status.className = 'status';
+                status.textContent = '✅ Voice completed successfully';
+                currentSpeech = null;
+            };
+
+            currentSpeech.onerror = (e) => {
+                console.error('❌ Speech error:', e.error);
+                button.classList.remove('speaking');
+                status.className = 'status';
+                status.textContent = '❌ Error playing voice: ' + e.error;
+                currentSpeech = null;
+            };
+
+            // Speak
+            try {
+                window.speechSynthesis.speak(currentSpeech);
+                console.log('Speech command sent');
+            } catch (error) {
+                console.error('Failed to start voice:', error);
+                button.classList.remove('speaking');
+            }
+        }
+
+        // Stop all voices
+        function stopAllVoices() {
+            window.speechSynthesis.cancel();
+            document.querySelectorAll('.voice-btn').forEach(btn => {
+                btn.classList.remove('speaking');
+            });
+            document.getElementById('status').className = 'status';
+            document.getElementById('status').textContent = '⏹️ All voices stopped';
+            currentSpeech = null;
+        }
+
+        // Test all languages
+        async function testAllLanguages() {
+            if (loans.length === 0) {
+                alert('Please load loans first');
+                return;
+            }
+
+            const firstLoan = loans[0];
+            
+            // Play English
+            const enBtn = document.querySelector('#englishGrid .voice-btn');
+            playVoice(firstLoan.loan_id, 'en', enBtn);
+            
+            // Wait and play Tamil
+            setTimeout(() => {
+                const taBtn = document.querySelector('#tamilGrid .voice-btn');
+                playVoice(firstLoan.loan_id, 'ta', taBtn);
+            }, 5000);
+            
+            // Wait and play Nepali
+            setTimeout(() => {
+                const neBtn = document.querySelector('#nepaliGrid .voice-btn');
+                playVoice(firstLoan.loan_id, 'ne', neBtn);
+            }, 10000);
+        }
+
+        // Load on page load
+        window.addEventListener('DOMContentLoaded', loadLoans);
+    </script>
+</body>
+</html>

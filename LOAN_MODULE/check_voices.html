@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Available Voices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .info {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .voice-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .voice-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .voice-card.tamil {
+            border-left-color: #FF6B6B;
+        }
+        .voice-card.nepali {
+            border-left-color: #4ECDC4;
+        }
+        .voice-card.english {
+            border-left-color: #45B7D1;
+        }
+        .voice-name {
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .voice-lang {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .test-btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .test-btn:hover {
+            background: #45a049;
+        }
+        .no-voices {
+            color: red;
+            font-weight: bold;
+            padding: 20px;
+            text-align: center;
+            background: #ffebee;
+            border-radius: 8px;
+        }
+        .summary {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .stat {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        .install-guide {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffc107;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔊 Voice Synthesis Checker</h1>
+    
+    <div class="info">
+        <h2>System Information</h2>
+        <p><strong>Browser:</strong> <span id="browser"></span></p>
+        <p><strong>Platform:</strong> <span id="platform"></span></p>
+        <p><strong>Speech Synthesis Support:</strong> <span id="support"></span></p>
+    </div>
+
+    <div class="summary" id="summary"></div>
+
+    <div id="install-msg" class="install-guide" style="display: none;">
+        <h3>⚠️ Tamil Voice Not Found</h3>
+        <p><strong>To add Tamil voice support on macOS:</strong></p>
+        <ol>
+            <li>Open <strong>System Preferences</strong></li>
+            <li>Go to <strong>Accessibility</strong> → <strong>Spoken Content</strong></li>
+            <li>Click <strong>System Voice</strong> dropdown</li>
+            <li>Click <strong>Manage Voices...</strong></li>
+            <li>Find and download <strong>Tamil (India)</strong> voices</li>
+            <li>Recommended: <strong>Narayanan (Tamil)</strong></li>
+        </ol>
+        <p><em>Alternative: Hindi voice (Lekha) will be used as fallback.</em></p>
+    </div>
+
+    <h2>Available Voices (<span id="totalVoices">0</span>)</h2>
+    <div class="voice-list" id="voiceList"></div>
+
+    <script>
+        // Display browser info
+        document.getElementById('browser').textContent = navigator.userAgent.split(' ').pop();
+        document.getElementById('platform').textContent = navigator.platform;
+        document.getElementById('support').textContent = 'speechSynthesis' in window ? '✅ YES' : '❌ NO';
+
+        function loadVoices() {
+            const voices = window.speechSynthesis.getVoices();
+            const voiceList = document.getElementById('voiceList');
+            const totalVoices = document.getElementById('totalVoices');
+            
+            console.log('Total voices found:', voices.length);
+            
+            if (voices.length === 0) {
+                voiceList.innerHTML = '<div class="no-voices">No voices available. Please wait or reload the page.</div>';
+                return;
+            }
+
+            totalVoices.textContent = voices.length;
+
+            // Count voices by language
+            const tamilCount = voices.filter(v => v.lang.startsWith('ta')).length;
+            const nepaliCount = voices.filter(v => v.lang.startsWith('ne')).length;
+            const englishCount = voices.filter(v => v.lang.startsWith('en')).length;
+            const hindiCount = voices.filter(v => v.lang.startsWith('hi')).length;
+
+            // Show summary
+            const summary = document.getElementById('summary');
+            summary.innerHTML = `
+                <div class="stat">
+                    <div class="stat-number">${tamilCount}</div>
+                    <div class="stat-label">Tamil Voices</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">${nepaliCount}</div>
+                    <div class="stat-label">Nepali Voices</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">${englishCount}</div>
+                    <div class="stat-label">English Voices</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">${hindiCount}</div>
+                    <div class="stat-label">Hindi Voices (Fallback)</div>
+                </div>
+            `;
+
+            // Show install guide if no Tamil voice
+            if (tamilCount === 0) {
+                document.getElementById('install-msg').style.display = 'block';
+            }
+
+            // Sort voices: Tamil first, then Nepali, then English, then others
+            voices.sort((a, b) => {
+                const order = { 'ta': 1, 'ne': 2, 'hi': 3, 'en': 4 };
+                const aLang = a.lang.substring(0, 2);
+                const bLang = b.lang.substring(0, 2);
+                return (order[aLang] || 99) - (order[bLang] || 99);
+            });
+
+            voiceList.innerHTML = '';
+            
+            voices.forEach((voice, index) => {
+                const card = document.createElement('div');
+                card.className = 'voice-card';
+                
+                // Add special class for important languages
+                if (voice.lang.startsWith('ta')) {
+                    card.classList.add('tamil');
+                } else if (voice.lang.startsWith('ne')) {
+                    card.classList.add('nepali');
+                } else if (voice.lang.startsWith('en')) {
+                    card.classList.add('english');
+                } else if (voice.lang.startsWith('hi')) {
+                    card.classList.add('tamil'); // Use same color for Hindi (fallback)
+                }
+                
+                const testText = voice.lang.startsWith('ta') ? 'நீங்கள் இந்த கடன் பெற தகுதியுடையவர்' :
+                                voice.lang.startsWith('ne') ? 'तपाईं यो ऋण लिन योग्य हुनुहुन्छ' :
+                                voice.lang.startsWith('hi') ? 'आप इस ऋण के लिए पात्र हैं' :
+                                'You are eligible for this loan';
+                
+                card.innerHTML = `
+                    <div class="voice-name">${voice.name}</div>
+                    <div class="voice-lang">
+                        ${voice.lang} 
+                        ${voice.default ? '⭐ Default' : ''}
+                        ${voice.localService ? '📱 Local' : '☁️ Online'}
+                    </div>
+                    <button class="test-btn" onclick="testVoice(${index}, '${testText.replace(/'/g, "\\'")}')">
+                        🎤 Test Voice
+                    </button>
+                `;
+                
+                voiceList.appendChild(card);
+            });
+        }
+
+        function testVoice(index, text) {
+            const voices = window.speechSynthesis.getVoices();
+            const voice = voices[index];
+            
+            console.log('Testing voice:', voice.name, voice.lang);
+            
+            window.speechSynthesis.cancel(); // Stop any ongoing speech
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.voice = voice;
+            utterance.lang = voice.lang;
+            utterance.rate = 0.8;
+            utterance.pitch = 1.0;
+            utterance.volume = 1.0;
+            
+            utterance.onstart = () => {
+                console.log('✅ Voice started:', voice.name);
+            };
+            
+            utterance.onend = () => {
+                console.log('✅ Voice completed');
+            };
+            
+            utterance.onerror = (e) => {
+                console.error('❌ Voice error:', e);
+            };
+            
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Load voices
+        if ('speechSynthesis' in window) {
+            // Load immediately
+            loadVoices();
+            
+            // Some browsers need this event
+            window.speechSynthesis.onvoiceschanged = () => {
+                loadVoices();
+            };
+            
+            // Reload after a delay (for browsers that need it)
+            setTimeout(loadVoices, 100);
+            setTimeout(loadVoices, 500);
+        }
+    </script>
+</body>
+</html>
